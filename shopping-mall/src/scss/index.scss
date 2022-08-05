@@ -1,1 +1,18 @@
-@import 'products'
+@import 'products';
+@import 'cart';
+
+body{
+    margin: 0;
+}
+
+#root{
+    max-width: 900px;
+}
+
+.gnb{
+    ul{
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+    }
+}

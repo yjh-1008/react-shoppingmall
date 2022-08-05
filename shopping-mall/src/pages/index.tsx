@@ -1,5 +1,3 @@
-import { useRoutes } from 'react-router-dom'
+const MainPage = () => <div>메인페이지 </div>
 
-const Product = () => <div>상품목록.</div>
-
-export default Product;
+export default MainPage;

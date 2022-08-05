@@ -4,9 +4,8 @@ import { Outlet } from 'react-router-dom';
 const Layout: React.FC = () => {
     return(
         <div>
-            <Suspense>
+            <Suspense fallback={'loading...'}>
                 <Outlet />
-
             </Suspense>
         </div>
     )

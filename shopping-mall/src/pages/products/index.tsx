@@ -20,6 +20,7 @@ const ProductList = () =>{
     */
     return (
         <div>
+            <h2>상품 목록</h2>
             <ul className="products">
                 {data?.map(product => (
                     <ProductItem {...product} key={product.id}  />
