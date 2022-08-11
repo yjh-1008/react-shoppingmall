@@ -1,14 +1,12 @@
 import { useRoutes } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query';
-import {fetcher, QueryKeys } from '../../queryClient';
-import { Product } from '../../types';
+import {graphqlFetcher, QueryKeys } from '../../queryClient';
+
 import ProductItem from '../../components/product/item';
+import GET_PRODUCTS, { Products } from '../../graphql/products';
 const ProductList = () =>{
-    const { data } = useQuery<Product[]>([QueryKeys.PRODUCTS], () =>
-     fetcher({
-        method:'GET',
-        path:'/products'
-    }))
+    const { data } = useQuery<Products>([QueryKeys.PRODUCTS], () =>
+    graphqlFetcher(GET_PRODUCTS))
     /*
     category: "men's clothing"
     description: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday"
@@ -22,7 +20,7 @@ const ProductList = () =>{
         <div>
             <h2>상품 목록</h2>
             <ul className="products">
-                {data?.map(product => (
+                {data?.products?.map(product => (
                     <ProductItem {...product} key={product.id}  />
                 ))}
             </ul>

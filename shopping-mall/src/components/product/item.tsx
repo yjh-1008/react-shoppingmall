@@ -1,22 +1,29 @@
-import { Product } from "../../types";
+
 import { Link } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { Product } from "../../graphql/products";
+import { cartItemSelector } from '../../recolis/cart';
 const ProductItem = ({
-    category,
-    description,
-    image,
-    id,
-    price,
-    rating,
-}: Product) => (
+  id,
+  imageUrl,
+  price,
+  title,
+  description,
+  createdAt,
+}: Product) => {
+  const [cartAmount,setCartAmount] = useRecoilState(cartItemSelector(id));
+  const addToCart=()=>setCartAmount(prev=>(cartAmount||0)+1);
+  return (
     <li className="product-item">
-        <Link to ={`/products/${id}`}>
-            <p className="product-item__category">{category}</p>
-            <p className="product-item__title">title</p>
-            <img className="product-item__image"src={image} />
-            <span className="product-item__price">{price}</span>
-            <span className="product-item__rating">{rating.rate}</span>
-        </Link>
+      <Link to={`/products/${id}`}>
+        <p className="product-item__title">title</p>
+        <img className="product-item__image" src={imageUrl} />
+        <span className="product-item__price">{price}</span>
+      </Link>
+      <button className="product-item_add-cart" onClick={addToCart}>담기</button>
+      <span>{cartAmount}</span>
     </li>
-);
+  );
+};
 
 export default ProductItem
