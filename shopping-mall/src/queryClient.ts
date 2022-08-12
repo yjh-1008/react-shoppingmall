@@ -4,7 +4,7 @@ import {
     useQueryClient,
     QueryClient,
     QueryClientProvider,
-  } from '@tanstack/react-query'
+  } from 'react-query'
 import request, { RequestDocument } from 'graphql-request';
 
 export const getClient = (()=>{
@@ -13,8 +13,8 @@ export const getClient = (()=>{
         if(!client) client = new QueryClient({
             defaultOptions: {
                 queries: {
-                    cacheTime: 1000*60*60*24,
-                    staleTime: 1000*60,
+                    cacheTime: Infinity,
+                    staleTime: Infinity,
                     refetchOnMount: false,
                     refetchOnReconnect: false,
                     refetchOnWindowFocus : false,
@@ -72,4 +72,5 @@ export const graphqlFetcher =  (query: RequestDocument, variables = {}) => reque
 
 export const QueryKeys = {
     PRODUCTS: 'PRODUCTS',
-};
+    CART: 'CART',
+  }

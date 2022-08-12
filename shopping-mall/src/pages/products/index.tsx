@@ -1,5 +1,5 @@
 import { useRoutes } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from 'react-query';
 import {graphqlFetcher, QueryKeys } from '../../queryClient';
 
 import ProductItem from '../../components/product/item';

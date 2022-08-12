@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom'
 import ProductDetail from '../../components/product/detail';
 import GET_PRODUCTS, { GET_PRODUCT, Product } from '../../graphql/products';
